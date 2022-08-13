@@ -4,74 +4,79 @@ public class Book {
 
     private String bookTitle;
     private int bookYear;
-    private String authorFirstName;
-    private String authorLastName;
-    private String publisherName;
-    private String publisherCity;
+    private Author author;
+    private Publisher publisher;
 
-    public String getBookTitle() {
+
+    public String getTitle() {
         return bookTitle;
     }
 
-    public void setBookTitle(String bookName) {
+    public void setTitle(String bookName) {
         this.bookTitle = bookName;
     }
 
-    public int getBookYear() {
+    public int getYear() {
         return bookYear;
     }
 
-    public void setBookYear(int bookYear) {
+    public void setYear(int bookYear) {
         this.bookYear = bookYear;
     }
 
-    public String getAuthorFirstName() {
-        return authorFirstName;
+    public Book() {
     }
 
-    public void setAuthorFirstName(String authorFirstName) {
-        this.authorFirstName = authorFirstName;
+    public Book(String bookTitle, int bookYear, Author author, Publisher publisher) {
+        this.bookTitle = bookTitle;
+        this.bookYear = bookYear;
+        this.author = author;
+        this.publisher = publisher;
     }
 
-    public String getAuthorLastName() {
-        return authorLastName;
-    }
 
-    public void setAuthorLastName(String authorLastName) {
-        this.authorLastName = authorLastName;
-    }
-
-    public String getPublisherName() {
-        return publisherName;
-    }
-
-    public void setPublisherName(String publisherName) {
-        this.publisherName = publisherName;
-    }
-
-    public String getPublisherCity() {
-        return publisherCity;
-    }
-
-    public void setPublisherCity(String publisherCity) {
-        this.publisherCity = publisherCity;
-    }
-
-    public String getFormattedPublisherName() {
-        return String.format("%s, %s", getPublisherName(), getPublisherCity());
-    }
-
-    public String getFormattedAuthorName() {
-        return String.format("%s, %s", getAuthorLastName(), getAuthorFirstName());
-    }
-
-    public String getFormattedBookName() {
+    public String getFormattedName() {
         return String.format(
                 "%s (%s)\nWritten by %s\nPublished by %s",
-                getBookTitle(),
-                getBookYear(),
-                getFormattedAuthorName(),
-                getFormattedPublisherName()
+                getTitle(),
+                getYear(),
+                this.author.getFormattedName(),
+                this.publisher.getFormattedName()
         );
+    }
+
+    public void setAuthorFirstName(String firstName) {
+
+        this.author.setFirstName(firstName);
+    }
+
+    public void setAuthorLastName(String lastName) {
+        this.author.setLastName(lastName);
+    }
+
+
+    public void setPublisherName(String publisherName) {
+        this.publisher.setName(publisherName);
+    }
+
+
+    public void setPublisherCity(String city) {
+        this.publisher.setCity(city);
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }
